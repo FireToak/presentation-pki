@@ -1,6 +1,6 @@
 # Présentation de la notion de PKI
 
-![Bannière PKI](banniere-pki.png)
+![Bannière PKI](./assets/img/banniere-pki.png)
 
 *Écrit par Louis MEDO et Amine KADA.*
 
@@ -66,7 +66,7 @@ La création d'un certificat suit un processus en 4 étapes pour garantir que la
 3. **La validation :** L'AE vérifie l'identité du demandeur (ex: validation qu'il possède bien le nom de domaine).
 4. **L'émission :** L'AC prend les données du CSR, crée le certificat X.509, le signe avec sa propre clé privée, et le renvoie à l'entité.
 
-![Schéma création d'un certificat auprès d'une autorité de certification | 495](schema-creation-certificat-autorité-certification.png)
+![Schéma création d'un certificat auprès d'une autorité de certification | 495](./assets/img/schema-creation-certificat-autorité-certification.png)
 
 ### 3.4. La Révocation
 
@@ -97,7 +97,7 @@ Vous allez utiliser un outil appelé **Certbot**, qui est un client automatisé 
 2. **Défi (Challenge) :** Let's Encrypt reçoit le CSR et doit valider que vous contrôlez bien ce domaine (rôle de l'AE). Il vous lance un défi (généralement placer un fichier temporaire spécifique à la racine de votre serveur web).
 3. **Émission :** Let's Encrypt télécharge ce fichier depuis votre Apache. Le défi est réussi. Let's Encrypt signe numériquement votre clé publique et vous renvoie le certificat X.509. Certbot l'installe automatiquement dans la configuration d'Apache.
 
-![Diagramme - Obtention du certificat](diagramme-obtention-certifcat.png.png)
+![Diagramme - Obtention du certificat](./assets/img/diagramme-obtention-certifcat.png.png)
 
 #### Phase 2 : La vérification (Côté client)
 
