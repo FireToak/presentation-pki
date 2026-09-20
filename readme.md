@@ -1,25 +1,10 @@
-# Template `README.md` pour les dépôts
+# Présentation - Infrastructure à Clés Publiques (PKI)
 
-## Prompt IA
-
-Tu es un ingénieur SRE senior garant du respect des bonnes pratiques de l’industrie. Ta mission est de rédiger le fichier `README.md` du projet en restant concis, clair et professionnel dans tes explications.
-
-Ci-dessous se trouve un template Markdown du `README.md`. Les commentaires entre crochets `[]` sont des instructions destinées à ton persona et ne doivent jamais apparaître dans le résultat final.
-
-Ta réponse doit contenir uniquement le résultat final, sans texte supplémentaire ni explication.
-
-Informations à prendre en compte :
-
-* [INSÉRER LES INFORMATIONS]
-
-````markdown
-# [nom]
-
-![Bannière du projet]([Insère l'URL de l'image si fournie, sinon supprime cette ligne])
+![Bannière du projet](./assets/img/banniere-pki.png)
 
 ## Contexte
 
-[Rédige une description claire et professionnelle du projet basée sur les informations fournies]
+Ce projet est une ressource documentaire détaillée visant à présenter les concepts fondamentaux des Infrastructures à Clés Publiques (PKI). Il explique les mécanismes de la cryptographie asymétrique, le cycle de vie des certificats X.509 (génération, validation, émission), les chaînes de confiance, ainsi que les processus de révocation (CRL, OCSP). Ce dépôt dresse également un panorama technique des outils du marché (Microsoft AD CS, Step-CA, XCA) pour aider au déploiement et à l'automatisation de PKI internes en environnements de production ou DevOps.
 
 -----
 
@@ -28,45 +13,38 @@ Informations à prendre en compte :
 L’organisation du dépôt suit la logique suivante :
 
 ```text
-[Génération de l’arborescence du projet avec les dossiers et fichiers importants]
+
+.
+
+├── assets/
+│   ├── img/
+│   └── schemas/
+├── Présentation de la notion de PKI.md
+└── README.md
 ```
 
-- **`[<chemin>/]`** : [Description de l’utilité du dossier]
-- **`[<chemin>/<nom.extension>]`** : [Description de l’utilité du fichier]
+- **`assets/img/`** : Contient les visuels, diagrammes de séquence et schémas d'architecture exportés au format PNG.
+- **`assets/schemas/`** : Regroupe les fichiers sources (Mermaid.js et Excalidraw) permettant la maintenance et l'évolution des diagrammes.
+- **`Présentation de la notion de PKI.md`** : Document principal contenant la théorie, les études de cas (ex: serveur web Apache) et les comparatifs d'outils.
 
 -----
 
-## Utilisation de [nom]
+## Utilisation du projet
 
 ### 1. Cloner le dépôt localement
 
 ```bash
-git clone [URL du dépôt]
-cd [Nom du dépôt]
+git clone https://github.com/FireToak/pki-presentation.git
+cd pki-presentation
 ```
 
-### 2. [Action à réaliser]
+### 2. Lire la documentation
 
-[Description de l’action]
+Le cours principal est rédigé en Markdown. Il est recommandé de le lire à l'aide d'un éditeur compatible (VS Code, Obsidian, Typora) ou directement via l'interface web de votre forge logicielle.
 
-```bash
-[Exemple de commande]
-```
+### 3. Éditer ou maintenir les schémas
 
-### 3. [Action suivante]
-
-[Ajouter autant d’étapes que nécessaire]
-
------
-
-## Bonnes pratiques et sécurité
-
-1. **[Nom de la bonne pratique]** : [Description]
-2. **[Nom de la bonne pratique]** : [Description]
-
-```bash
-[Commande à exécuter si nécessaire]
-```
+Pour modifier les diagrammes d'obtention ou de vérification, copiez le contenu des fichiers `.md` situés dans `assets/schemas/` et collez-le dans le [Mermaid Live Editor](https://mermaid.live/) ou l'éditeur Excalidraw.
 
 -----
 
@@ -78,6 +56,5 @@ cd [Nom du dépôt]
 
 <div align="center">
 <br>
-<small><i>Dernière mise à jour : [jour mois année — Exemple : 15 avril 2026]</i></small>
+<small><i>Dernière mise à jour : 20 septembre 2026</i></small>
 </div>
-````
