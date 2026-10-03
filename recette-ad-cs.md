@@ -16,8 +16,8 @@
 
 Cette procédure de recette valide le déploiement de l'Infrastructure à Clés Publiques (AD CS). Les scénarios visent à certifier la bonne propagation de la racine de confiance sur les postes de travail via GPO, l'activation effective du chiffrement LDAPS sur le contrôleur de domaine, le fonctionnement des certificats web (HTTPS) sans erreur de sécurité sur GLPI, ainsi que l'accessibilité de la liste de révocation (CRL).
 
-> [!tip] Conditions préalables
-> Les tests côté client doivent être exécutés depuis une machine jointe au domaine Active Directory (`local.agence.cub.sioplc.fr`) et avec une session utilisateur standard pour valider le comportement en conditions réelles.
+> [!TIP]
+> **Conditions préalables :** Les tests côté client doivent être exécutés depuis une machine jointe au domaine Active Directory (`local.agence.cub.sioplc.fr`) et avec une session utilisateur standard pour valider le comportement en conditions réelles.
 
 ## 2. Procédures de validation
 
