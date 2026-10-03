@@ -76,4 +76,4 @@ gpupdate /force
 - `/force` : Paramètre ordonnant de réappliquer toutes les stratégies (et non seulement celles modifiées), forçant ainsi la machine à récupérer immédiatement le nouveau certificat publié dans l'AD.
 
 > [!info] Alternative : Architecture Autonome (Standalone)
-> Si vous aviez appliqué la bonne pratique avec une **Autorité de Certification Racine Autonome** (Standalone), cette publication automatique n'aurait pas eu lieu car le serveur ne communique pas avec l'AD DS. Il aurait alors fallu exporter manuellement le certificat `.crt`, puis configurer une **Stratégie de Groupe (GPO)** (via *Configuration Ordinateur > Paramètres de sécurité > Stratégies de clé publique > Autorités de certification racines de confiance*) pour pousser ce certificat sur l'ensemble du parc informatique.
+> Si vous aviez appliqué la bonne pratique avec une **Autorité de Certification Racine Autonome** (Standalone), cette publication automatique n'aurait pas eu lieu car le serveur ne communique pas avec l'AD DS. Il aurait alors fallu exporter manuellement le certificat `.crt`, puis configurer une **Stratégie de Groupe (GPO)**.
