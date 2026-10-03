@@ -23,8 +23,8 @@
 
 Le déploiement des services de certificats Active Directory (AD CS) constitue le socle de l'Infrastructure à Clés Publiques (PKI). Dans le cadre de l'infrastructure CUB, ce service permet de garantir l'identité des serveurs, de sécuriser les flux réseau et d'authentifier les clients. L'installation se fait sur un environnement Windows Server Core, privilégié pour réduire la surface d'attaque et minimiser les besoins en ressources.
 
-> [!warning] Architecture à deux niveaux
-> la PKI nécessite deux serveurs distincts : une CA Racine (isolée, hors domaine et hors-ligne) et une CA Intermédiaire (jointe au domaine et en ligne). Ce document couvre uniquement l'installation des binaires communs aux deux serveurs, sans altérer l'état du système via une configuration post-déploiement.
+> [!WARNING]
+> **Architecture à deux niveaux :** la PKI nécessite deux serveurs distincts : une CA Racine (isolée, hors domaine et hors-ligne) et une CA Intermédiaire (jointe au domaine et en ligne). Ce document couvre uniquement l'installation des binaires communs aux deux serveurs.
 
 ## 3. Prérequis {#3-prerequis}
 
@@ -66,10 +66,7 @@ Display Name                                            Name                    
     [X] Autorité de certification                       ADCS-Cert-Authority            Installed
 ```
 
-> [!info] Étape suivante
-> L'installation des binaires étant terminée, la configuration cryptographique (génération des clés, définition de l'algorithme de hachage, durée de validité) devra être effectuée ultérieurement à l'aide de la commande `Install-AdcsCertificationAuthority` selon le rôle attribué à la machine (Racine ou Subordonnée).
+> [!NOTE]
+> **Étape suivante :** L'installation des binaires étant terminée, la configuration cryptographique (génération des clés, définition de l'algorithme de hachage, durée de validité) devra être effectuée ultérieurement à l'aide de la commande `Install-AdcsCertificationAuthority` selon le rôle attribué à la machine (Racine ou Subordonnée).
 >
-> Procédures de configuration :
->
-> - [Configuration de AD CS - CA Racine](./Configuration%20de%20AD%20CS%20-%20CA%20Racine.md)
-> - [Configuration de AD CS - CA Intermédiaire.md](./Configuration%20de%20AD%20CS%20-%20CA%20Intermédiaire.md)
+> Procédures de configuration : [Configuration AD CS](./configuration-ad-cs.md)
