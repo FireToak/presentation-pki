@@ -22,17 +22,20 @@
 
 ## 2. Contexte
 
-> [!info] Certificat racine d'entreprise
-> Dans le contexte des certificats X.509, une « racine d'entreprise » (ou Autorité de Certification Racine d'Entreprise) désigne le certificat racine (Root CA) généré et géré en interne par une organisation, par opposition aux racines publiques (comme DigiCert, Let's Encrypt, etc.) utilisées pour les sites web accessibles sur Internet.
+> [!NOTE]
+> **Certificat racine d'entreprise :** Dans le contexte des certificats X.509, une « racine d'entreprise » (ou Autorité de Certification Racine d'Entreprise) désigne le certificat racine (Root CA) généré et géré en interne par une organisation, par opposition aux racines publiques (comme DigiCert, Let's Encrypt, etc.) utilisées pour les sites web accessibles sur Internet.
 
 Le déploiement d'une PKI complète nécessite normalement une séparation des rôles. Pour des besoins pédagogiques et afin de simplifier l'architecture, les concepts d'Autorité Racine (sommet de la confiance) et d'Autorité Intermédiaire (émission des certificats) sont ici consolidés sur un seul et même serveur Windows.
 
 Ce serveur déploiera le rôle en mode **Racine d'Entreprise** (`EnterpriseRootCA`), lui permettant de générer sa propre ancre de confiance tout en s'intégrant à l'Active Directory pour automatiser la distribution vers les postes clients. Il hébergera également le serveur web IIS pour la Liste de Révocation (CRL).
 
-> [!danger] Mise en production
-> Dans un environnement de production, cette architecture consolidée est formellement proscrite. L'AC Racine **DOIT** être un serveur autonome (Standalone), non joint au domaine, et maintenu strictement **hors-ligne** (éteint dans un coffre) pour protéger sa clé privée ou utiliser un HSM (modules de sécurité matériels). L'AC Intermédiaire est le seul serveur en ligne habilité à interagir avec le domaine. Gardez ce concept de séparation (Air-Gap) à l'esprit pour vos futures missions en entreprise.
+> [!WARNING]
+> **Mise en production :** Dans un environnement de production, cette architecture consolidée est formellement proscrite. L'AC Racine **DOIT** être un serveur autonome (Standalone), non joint au domaine, et maintenu strictement **hors-ligne** (éteint dans un coffre) pour protéger sa clé privée ou utiliser un HSM (modules de sécurité matériels). L'AC Intermédiaire est le seul serveur en ligne habilité à interagir avec le domaine. Gardez ce concept de séparation (Air-Gap) à l'esprit pour vos futures missions en entreprise.
 
 ## 3. Point de distribution de la liste de révocation (IIS) {#3-point-de-distribution-de-la-liste-de-revocation-iis}
+
+> [!WARNING]
+> **Prérequis :** Vous devez avoir installé le rôle **AD DS** pour le déploiement du certificat racine sur tous les postes du domaine !
 
 3.1. **Déploiement et configuration du rôle Serveur Web (IIS).** Installation du service web pour exposer la liste des certificats révoqués (CRL) aux clients du réseau de manière performante.
 
@@ -75,5 +78,5 @@ gpupdate /force
 - `gpupdate` : Utilitaire natif en ligne de commande permettant d'actualiser les paramètres de stratégie de groupe locaux et Active Directory.
 - `/force` : Paramètre ordonnant de réappliquer toutes les stratégies (et non seulement celles modifiées), forçant ainsi la machine à récupérer immédiatement le nouveau certificat publié dans l'AD.
 
-> [!info] Alternative : Architecture Autonome (Standalone)
-> Si vous aviez appliqué la bonne pratique avec une **Autorité de Certification Racine Autonome** (Standalone), cette publication automatique n'aurait pas eu lieu car le serveur ne communique pas avec l'AD DS. Il aurait alors fallu exporter manuellement le certificat `.crt`, puis configurer une **Stratégie de Groupe (GPO)**.
+> [!TIP]
+> **Alternative :** Si vous aviez appliqué la bonne pratique avec une **Autorité de Certification Racine Autonome** (Standalone), cette publication automatique n'aurait pas eu lieu car le serveur ne communique pas avec l'AD DS. Il aurait alors fallu exporter manuellement le certificat `.crt`, puis configurer une **Stratégie de Groupe (GPO)**.
